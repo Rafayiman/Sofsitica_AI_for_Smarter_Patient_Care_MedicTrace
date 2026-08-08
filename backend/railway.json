@@ -4,7 +4,7 @@
     "builder": "RAILPACK"
   },
   "deploy": {
-    "preDeployCommand": "python -m app.ingest.run_ingest --csv-dir ../demo_data/mimic-iv-clinical-database-demo-2.2",
+    "preDeployCommand": "python -m app.ingest.run_ingest --csv-dir demo_data/mimic-iv-clinical-database-demo-2.2",
     "startCommand": "uvicorn app.main:app --host 0.0.0.0 --port $PORT",
     "healthcheckPath": "/api/health",
     "restartPolicyType": "ON_FAILURE",

@@ -64,7 +64,7 @@ cd backend
 python -m venv .venv && .venv\Scripts\activate        # or: source .venv/bin/activate
 pip install -r requirements.txt
 copy .env.example .env                                # 
-.venv\Scripts\python -m ingest.run_ingest             # Stage 1+2+3 (CSVs in ../mimic-iv-clinical-database-demo-2.2)
+.venv\Scripts\python -m ingest.run_ingest             # Stage 1+2+3 (CSVs in demo_data/mimic-iv-clinical-database-demo-2.2)
 .venv\Scripts\python -m uvicorn app.main:app --port 8000
 
 # 2. Frontend

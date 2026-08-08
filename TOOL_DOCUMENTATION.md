@@ -247,7 +247,7 @@ rule), user task completion (walkthrough in `TOOL_DOCUMENTATION.md`).
 cd backend
 pip install -r requirements.txt
 copy .env.example .env                     # add GROQ_API_KEY
-.venv\Scripts\python -m app.ingest.run_ingest    # stages 1+2+3 (CSVs in ../mimic-iv-clinical-database-demo-2.2)
+.venv\Scripts\python -m app.ingest.run_ingest    # stages 1+2+3 (CSVs in demo_data/mimic-iv-clinical-database-demo-2.2)
 .venv\Scripts\python -m uvicorn app.main:app --port 8000
 
 # Frontend

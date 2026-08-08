@@ -6,7 +6,7 @@ Log of every external source and version used in this project (required by the c
 
  **MIMIC-IV Clinical Database Demo (version 2.2)** [Data set]. PhysioNet.
   https://doi.org/10.13026/dp1f-ex47
-  - Local copy: `mimic-iv-clinical-database-demo-2.2/` (CSVs, unmodified)
+  - Local copy: `backend/demo_data/mimic-iv-clinical-database-demo-2.2/` (CSVs, unmodified)
   - Files used: `patients.csv`, `admissions.csv`, `transfers.csv`, `diagnoses_icd.csv`,
     `procedures_icd.csv`, `prescriptions.csv`, `d_labitems.csv`, `labevents.csv`,
     `icustays.csv`, `chartevents.csv`, `procedureevents.csv`, `d_icd_diagnoses.csv`,

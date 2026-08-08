@@ -15,13 +15,16 @@ from sqlalchemy import text
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--csv-dir", default=os.getenv("CSV_DIR", "../mimic-iv-clinical-database-demo-2.2"))
+    parser.add_argument("--csv-dir", default=os.getenv("CSV_DIR", "demo_data/mimic-iv-clinical-database-demo-2.2"))
     parser.add_argument("--skip-stage", action="store_true")
     args = parser.parse_args()
 
     init_db()
     print("[1/3] staging raw CSVs ...")
     counts = {} if args.skip_stage else stage_raw(args.csv_dir)
+    if not counts and not args.skip_stage:
+        print(f"Stage 1 FAIL: no CSVs found under {args.csv_dir} (expected hosp/ and icu/ subfolders)")
+        return 1
     if counts:
         failures = verify_counts(args.csv_dir, counts)
         if failures:

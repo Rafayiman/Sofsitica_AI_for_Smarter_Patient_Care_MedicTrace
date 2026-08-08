@@ -18,7 +18,7 @@ python -m venv .venv
 pip install -r requirements.txt
 copy .env.example .env                      # then add your GROQ_API_KEY
 
-# Ingest (Stage 1+2+3) — CSV sources in ../mimic-iv-clinical-database-demo-2.2
+# Ingest (Stage 1+2+3) — CSV sources in demo_data/mimic-iv-clinical-database-demo-2.2
 .venv\Scripts\python -m app.ingest.run_ingest
 
 # Serve
