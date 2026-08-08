@@ -159,7 +159,7 @@
    --------------------------------------------------------------- */
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 460px;
+  grid-template-columns: minmax(0, 1fr) 560px;
   gap: 20px;
   padding: 22px 24px 4px;
   flex: 1;
@@ -173,8 +173,8 @@
 .col-left { min-width: 0; }
 .col-right {
   position: sticky;
-  top: 76px;
-  height: calc(100vh - 96px);
+  top: 70px;
+  height: calc(100vh - 90px);
 }
 
 /* section header */

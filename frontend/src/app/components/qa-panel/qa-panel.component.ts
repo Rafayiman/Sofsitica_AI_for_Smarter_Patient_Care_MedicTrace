@@ -140,11 +140,11 @@ interface Message {
     .messages {
       flex: 1;
       overflow-y: auto;
-      padding: 16px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       gap: 14px;
-      min-height: 220px;
+      min-height: 340px;
       background: var(--bg);
     }
 
