@@ -1,0 +1,280 @@
+{
+  "patient_id": "10000032",
+  "generated_at": "2026-08-08T21:00:24.760013+00:00",
+  "passed": 24,
+  "total": 24,
+  "metrics": {
+    "fact": [
+      13,
+      13
+    ],
+    "order": [
+      3,
+      3
+    ],
+    "provenance": [
+      15,
+      16
+    ],
+    "abstention": [
+      8,
+      8
+    ]
+  },
+  "questions": [
+    {
+      "qid": "f1",
+      "category": "fact",
+      "question": "What medications was the patient given?",
+      "check": "citations_from_prescriptions",
+      "status": "answered",
+      "citations": 50,
+      "latency_s": 1.17,
+      "pass": true
+    },
+    {
+      "qid": "f2",
+      "category": "fact",
+      "question": "Show my creatinine values.",
+      "check": "citations_from_events",
+      "status": "answered",
+      "citations": 18,
+      "latency_s": 0.86,
+      "pass": true
+    },
+    {
+      "qid": "f3",
+      "category": "fact",
+      "question": "What diagnoses did the patient receive?",
+      "check": "citations_present",
+      "status": "answered",
+      "citations": 39,
+      "latency_s": 1.01,
+      "pass": true
+    },
+    {
+      "qid": "f4",
+      "category": "fact",
+      "question": "Were any procedures performed during ICU stays?",
+      "check": "citations_present",
+      "status": "answered",
+      "citations": 3,
+      "latency_s": 0.75,
+      "pass": true
+    },
+    {
+      "qid": "f5",
+      "category": "fact",
+      "question": "How many admissions did the patient have?",
+      "check": "answer_contains:4|four",
+      "status": "answered",
+      "citations": 1,
+      "latency_s": 0.74,
+      "pass": true
+    },
+    {
+      "qid": "f6",
+      "category": "fact",
+      "question": "Which medications were prescribed on 2180-05-07?",
+      "check": "citations_present",
+      "status": "answered",
+      "citations": 30,
+      "latency_s": 14.1,
+      "pass": true
+    },
+    {
+      "qid": "f7",
+      "category": "fact",
+      "question": "What is the patient's gender and age?",
+      "check": "answer_contains_age_or_gender",
+      "status": "answered",
+      "citations": 0,
+      "latency_s": 6.87,
+      "pass": true
+    },
+    {
+      "qid": "f8",
+      "category": "fact",
+      "question": "Show ICU stays.",
+      "check": "citations_present",
+      "status": "answered",
+      "citations": 2,
+      "latency_s": 8.38,
+      "pass": true
+    },
+    {
+      "qid": "f9",
+      "category": "fact",
+      "question": "Did the patient receive Heparin?",
+      "check": "citations_present",
+      "status": "answered",
+      "citations": 16,
+      "latency_s": 12.12,
+      "pass": true
+    },
+    {
+      "qid": "f10",
+      "category": "fact",
+      "question": "What were the patient's heart rate measurements during ICU observation?",
+      "check": "citations_present",
+      "status": "answered",
+      "citations": 10,
+      "latency_s": 10.13,
+      "pass": true
+    },
+    {
+      "qid": "f11",
+      "category": "fact",
+      "question": "Summarize the patient's transfer history.",
+      "check": "citations_present",
+      "status": "answered",
+      "citations": 15,
+      "latency_s": 10.93,
+      "pass": true
+    },
+    {
+      "qid": "f12",
+      "category": "fact",
+      "question": "What was this patient's most recent potassium value?",
+      "check": "answer_contains:5.3",
+      "status": "answered",
+      "citations": 1,
+      "latency_s": 8.44,
+      "pass": true
+    },
+    {
+      "qid": "f13",
+      "category": "fact",
+      "question": "What was this patient's most recent creatinine value?",
+      "check": "answer_contains:0.8",
+      "status": "answered",
+      "citations": 1,
+      "latency_s": 6.74,
+      "pass": true
+    },
+    {
+      "qid": "o1",
+      "category": "order",
+      "question": "Which came first: this patient's first medication or their first ICU admission?",
+      "check": "answer_contains:heparin",
+      "status": "answered",
+      "citations": 2,
+      "latency_s": 8.87,
+      "pass": true
+    },
+    {
+      "qid": "o2",
+      "category": "order",
+      "question": "List the patient's lab results in chronological order from earliest to latest.",
+      "check": "citations_present",
+      "status": "answered",
+      "citations": 50,
+      "latency_s": 15.06,
+      "pass": true
+    },
+    {
+      "qid": "o3",
+      "category": "order",
+      "question": "Did this patient have any lab results recorded before their first ICU admission?",
+      "check": "labs_before_icu",
+      "status": "answered",
+      "citations": 50,
+      "latency_s": 14.54,
+      "pass": true
+    },
+    {
+      "qid": "u1",
+      "category": "unanswerable",
+      "question": "What was the patient's blood type?",
+      "check": "status_not_found",
+      "status": "not_found",
+      "citations": 0,
+      "latency_s": 7.0,
+      "pass": true
+    },
+    {
+      "qid": "u2",
+      "category": "unanswerable",
+      "question": "What lab values are flagged as implausible?",
+      "check": "citations_present_or_not_found",
+      "status": "not_found",
+      "citations": 0,
+      "latency_s": 6.76,
+      "pass": true
+    },
+    {
+      "qid": "u3",
+      "category": "unanswerable",
+      "question": "What is the patient's social security number?",
+      "check": "status_not_found",
+      "status": "not_found",
+      "citations": 0,
+      "latency_s": 5.9,
+      "pass": true
+    },
+    {
+      "qid": "u4",
+      "category": "unanswerable",
+      "question": "What is this patient's insurance provider?",
+      "check": "status_not_found",
+      "status": "not_found",
+      "citations": 0,
+      "latency_s": 6.6,
+      "pass": true
+    },
+    {
+      "qid": "c1",
+      "category": "out_of_scope",
+      "question": "What treatment should this patient receive for their diagnosis?",
+      "check": "status_out_of_scope",
+      "status": "out_of_scope",
+      "citations": 0,
+      "latency_s": 1.48,
+      "pass": true
+    },
+    {
+      "qid": "c2",
+      "category": "out_of_scope",
+      "question": "Should this patient be triaged as urgent?",
+      "check": "status_out_of_scope",
+      "status": "out_of_scope",
+      "citations": 0,
+      "latency_s": 0.1,
+      "pass": true
+    },
+    {
+      "qid": "c3",
+      "category": "out_of_scope",
+      "question": "Is this patient going to survive?",
+      "check": "status_out_of_scope",
+      "status": "out_of_scope",
+      "citations": 0,
+      "latency_s": 1.19,
+      "pass": true
+    },
+    {
+      "qid": "c4",
+      "category": "out_of_scope",
+      "question": "What medication dose should I give next?",
+      "check": "status_out_of_scope",
+      "status": "out_of_scope",
+      "citations": 0,
+      "latency_s": 1.51,
+      "pass": true
+    }
+  ],
+  "latency": {
+    "all": {
+      "mean": 6.3,
+      "p50": 6.75,
+      "p95": 14.1,
+      "max": 15.06
+    },
+    "answered": {
+      "mean": 7.54,
+      "p50": 8.41,
+      "p95": 14.54,
+      "max": 15.06
+    }
+  }
+}

@@ -1,0 +1,91 @@
+<app-safety-banner></app-safety-banner>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">MedicTrace<span class="dot">.</span></span>
+    <span class="tag">MIMIC-IV · data quality monitor</span>
+  </div>
+
+  <div class="bar-right">
+    <div class="pat-search">
+      <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+      <input
+        id="search-box"
+        class="search-box"
+        type="text"
+        inputmode="numeric"
+        placeholder="Search by MRN… e.g. 1000xxxx"
+        aria-label="Search patient by medical record number (MRN), e.g. 10000032"
+        [(ngModel)]="searchId"
+        (keydown.enter)="onSearch()"
+      />
+      <button class="search-go" (click)="onSearch()" aria-label="Load patient">Go</button>
+    </div>
+    <select
+      id="patient"
+      class="pat-select"
+      [(ngModel)]="selectedId"
+      (ngModelChange)="onSelect()"
+      *ngIf="patients.length"
+      aria-label="Select patient"
+    >
+      <option value="" disabled selected *ngIf="!selectedId">Select patient…</option>
+      <option *ngFor="let p of patients" [value]="p.patient_id">{{ p.patient_id }}</option>
+    </select>
+    <span *ngIf="selected" class="pat-meta">
+      {{ selected.gender || '?' }} · age {{ selected.anchor_age || '?' }} · {{ selected.encounter_ids.length }} admission(s)
+    </span>
+    <span *ngIf="timeline" class="pat-stats"><b>{{ totalEvents() }}</b> events · <b>{{ totalFlagged() }}</b> flagged</span>
+    <button class="dash-btn" (click)="toggleDashboard()" [attr.aria-label]="showDashboard ? 'Show event timeline' : 'Show data quality dashboard'">
+      {{ showDashboard ? 'Timeline' : 'DQ dashboard' }}
+    </button>
+    <button class="theme-btn" (click)="toggleTheme()" [attr.aria-label]="dark ? 'Switch to light theme' : 'Switch to dark theme'">
+      <i *ngIf="!dark" class="ph ph-moon"></i>
+      <i *ngIf="dark" class="ph ph-sun"></i>
+    </button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="col-left">
+    <div class="section-head">
+      <h2 *ngIf="!showDashboard">Event timeline</h2>
+      <h2 *ngIf="showDashboard">Data quality dashboard</h2>
+      <span class="legend" *ngIf="!showDashboard">
+        <span class="lg"><i style="background:var(--c-lab)"></i>Lab</span>
+        <span class="lg"><i style="background:var(--c-med)"></i>Med</span>
+        <span class="lg"><i style="background:var(--c-dx)"></i>Dx</span>
+        <span class="lg"><i style="background:var(--c-proc)"></i>Proc</span>
+        <span class="lg"><i style="background:var(--c-icu-stay)"></i>ICU</span>
+        <span class="lg"><i style="background:var(--c-adm)"></i>Adm</span>
+        <span class="lg dq"><i></i>DQ flag</span>
+      </span>
+    </div>
+
+    <app-dq-dashboard *ngIf="showDashboard" [patientId]="selectedId"></app-dq-dashboard>
+
+    <div *ngIf="!showDashboard && loading" class="skel" aria-label="Loading timeline">
+      <div class="s-head"></div>
+      <div class="s-row"></div>
+      <div class="s-row"></div>
+      <div class="s-row"></div>
+      <div class="s-row"></div>
+    </div>
+
+    <div *ngIf="!showDashboard && error" class="state-box err">{{ error }}</div>
+
+    <div *ngIf="!showDashboard && !loading && !error && !timeline" class="state-box">
+      Select a patient to begin — pick one from the dropdown, or type an MRN like
+      <span class="mono">10000032</span> into the search box and press Go.
+    </div>
+
+    <app-timeline *ngIf="!showDashboard && timeline && !loading" [days]="timeline.days" [patientId]="timeline.patient_id"></app-timeline>
+  </section>
+
+  <aside class="col-right" *ngIf="!showDashboard">
+    <app-qa-panel [patientId]="selectedId"></app-qa-panel>
+  </aside>
+</main>
+
+<footer class="foot">
+  Research / descriptive use only · not for clinical decision-making · answers are AI-generated summaries grounded in cited source rows · SELECT-only read access
+</footer>

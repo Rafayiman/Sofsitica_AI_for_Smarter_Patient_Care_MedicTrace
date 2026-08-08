@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environment
+.venv/
+
+# Secrets (never commit API keys)
+.env
+
+# Generated data / runtime artifacts
+data/
+*.log
+
+# IDE / system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
