@@ -1,3 +1,3 @@
 export const environment = {
-  apiBase: 'https://your-backend.onrender.com',
+  apiBase: 'https://sofsiticaaiforsmarterpatientcaremedictrace-production.up.railway.app/',
 };
