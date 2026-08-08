@@ -1,3 +1,3 @@
 export const environment = {
-  apiBase: 'https://sofsiticaaiforsmarterpatientcaremedictrace-production.up.railway.app/',
+  apiBase: 'https://sofsiticaaiforsmarterpatientcaremedictrace-production.up.railway.app',
 };
