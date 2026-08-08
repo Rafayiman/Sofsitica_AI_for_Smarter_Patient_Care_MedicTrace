@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
         this.patients = res.patients;
       },
       error: () => {
-        this.error = 'Could not reach the backend at http://127.0.0.1:8000';
+        this.error = 'Could not reach the backend API. Is it running?';
       },
     });
   }

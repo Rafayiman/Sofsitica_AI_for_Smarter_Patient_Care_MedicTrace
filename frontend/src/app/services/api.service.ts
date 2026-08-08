@@ -9,10 +9,11 @@ import {
   QualitySummary,
   TimelineResponse,
 } from '../models';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private base = 'http://127.0.0.1:8000';
+  private base = environment.apiBase;
 
   constructor(private http: HttpClient) {}
 
