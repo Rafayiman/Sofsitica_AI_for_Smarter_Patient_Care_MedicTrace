@@ -127,7 +127,7 @@ interface Message {
       box-shadow: var(--shadow-1);
       overflow: hidden;
     }
-    .panel-head { padding: 13px 16px 11px; border-bottom: 1px solid var(--border-subtle); }
+    .panel-head { padding: 13px 16px 11px; border-bottom: 1px solid var(--border-subtle); flex-shrink: 0; }
     .title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); }
     .hint {
       display: block;
@@ -144,7 +144,7 @@ interface Message {
       display: flex;
       flex-direction: column;
       gap: 14px;
-      min-height: 340px;
+      min-height: 0;
       background: var(--bg);
     }
 
@@ -322,6 +322,7 @@ interface Message {
       padding: 12px 14px;
       border-top: 1px solid var(--border-subtle);
       background: var(--surface);
+      flex-shrink: 0;
     }
     .input-row input {
       flex: 1;
@@ -359,7 +360,6 @@ interface Message {
     .input-row button:disabled { opacity: 0.4; cursor: default; }
 
     @media (max-width: 720px) {
-      .messages { min-height: 260px; }
       .cite { flex-wrap: wrap; row-gap: 3px; }
     }
   `],

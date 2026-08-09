@@ -173,7 +173,7 @@
 .col-right {
   position: sticky;
   top: 70px;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 112px);
 }
 
 /* section header */
@@ -257,7 +257,7 @@
 
 @media (max-width: 1080px) {
   .layout { grid-template-columns: 1fr; }
-  .col-right { position: static; height: 560px; height: min(560px, 70dvh); }
+  .col-right { position: static; height: 560px; height: min(490px, 60dvh); }
 }
 
 @media (max-width: 900px) {
@@ -275,7 +275,7 @@
   .pat-search { flex: 1; min-width: 200px; }
   .search-box { width: 100%; }
   .pat-meta { display: none; }
-  .col-right { height: min(680px, 78dvh); }
+  .col-right { height: min(540px, 66dvh); }
   .layout { padding: 12px 12px 4px; }
 }
 
