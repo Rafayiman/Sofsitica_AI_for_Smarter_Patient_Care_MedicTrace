@@ -281,5 +281,6 @@
 
 @media (max-width: 480px) {
   .layout { padding: 10px 8px 4px; }
-  .pat-search { min-width: 0; }
+  .pat-search { flex: 1 1 100%; min-width: 0; }
+  .pat-select { flex: 1; min-width: 0; }
 }

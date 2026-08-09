@@ -182,9 +182,11 @@ table, .tabular { font-variant-numeric: tabular-nums; }
 
 /* ---------------------------------------------------------------
    Boot splash — brand moment shown pre-Angular (markup lives in
-   index.html). One wordmark, one fade. Token-driven, so it always
-   matches the resolved theme (stored → system → light). Removed
-   by app.component.ts after first render.
+   index.html). The overlay is always opaque (no entrance animation,
+   so nothing can ever show through it); only the wordmark fades
+   in. Token-driven, so it always matches the resolved theme
+   (stored choice → light). Removed by app.component.ts after
+   first render.
    --------------------------------------------------------------- */
 #boot-splash {
   position: fixed;
@@ -193,7 +195,7 @@ table, .tabular { font-variant-numeric: tabular-nums; }
   display: grid;
   place-items: center;
   background: var(--bg);
-  animation: splash-in var(--d-med) var(--ease);
+  pointer-events: none;
 }
 
 #boot-splash .boot-word {
@@ -203,6 +205,7 @@ table, .tabular { font-variant-numeric: tabular-nums; }
   letter-spacing: -0.01em;
   color: var(--ink);
   user-select: none;
+  animation: splash-in var(--d-med) var(--ease) backwards;
 }
 
 #boot-splash .boot-dot { color: var(--accent); }
@@ -214,6 +217,6 @@ table, .tabular { font-variant-numeric: tabular-nums; }
 }
 
 @keyframes splash-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
 }
