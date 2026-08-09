@@ -10,9 +10,6 @@
   <script>
     try {
       var t = localStorage.getItem('theme');
-      if (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        t = 'dark';
-      }
       document.documentElement.setAttribute('data-theme', t || 'light');
     } catch (e) {
       document.documentElement.setAttribute('data-theme', 'light');

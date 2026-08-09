@@ -30,13 +30,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    const stored = localStorage.getItem('theme');
-    let theme = stored;
-    if (!theme) {
-      const mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-      theme = mq && mq.matches ? 'dark' : 'light';
-    }
-    this.applyTheme(theme);
+    this.applyTheme(localStorage.getItem('theme') ?? 'light');
     this.dismissBootSplash();
     this.api.getPatients().subscribe({
       next: (res) => {
@@ -62,13 +56,12 @@ export class AppComponent implements OnInit {
     const el = document.getElementById('boot-splash');
     if (!el) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hold = reduce ? 0 : 1050;
-    const elapsed = Math.min(performance.now(), hold);
+    const hold = reduce ? 500 : 1500;
     setTimeout(() => {
       el.classList.add('boot-splash-hide');
       el.addEventListener('transitionend', () => el.remove(), { once: true });
       setTimeout(() => el.remove(), 1000);
-    }, Math.max(0, hold - elapsed));
+    }, hold);
   }
 
   onSelect(): void {

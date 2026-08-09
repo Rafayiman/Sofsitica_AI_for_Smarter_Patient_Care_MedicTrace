@@ -8,9 +8,9 @@
 /* ---------------------------------------------------------------
    Design tokens — one source of truth for both themes.
    Theme is set via data-theme on <html>; the toggle persists in
-   localStorage. Resolution: stored choice → prefers-color-scheme
-   → light. Same logic runs in index.html before first paint and
-   in app.component.ts, so splash and app always agree.
+   localStorage. Resolution: stored choice → light. Same logic
+   runs in index.html before first paint and in app.component.ts,
+   so splash and app always agree.
    --------------------------------------------------------------- */
 :root {
   color-scheme: light;
