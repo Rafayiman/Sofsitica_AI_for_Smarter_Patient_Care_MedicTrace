@@ -63,36 +63,40 @@ import { EvalReport, QualitySummary } from '../../models';
 
       <!-- Flags by rule -->
       <h3>Flags by rule</h3>
-      <table class="dash-table">
-        <thead>
-          <tr><th>rule</th><th>minor</th><th>moderate</th><th>severe</th><th>total</th></tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let r of summary.per_rule">
-            <td class="mono">{{ r.rule_id }}</td>
-            <td>{{ sev(r, 'minor') }}</td>
-            <td>{{ sev(r, 'moderate') }}</td>
-            <td>{{ sev(r, 'severe') }}</td>
-            <td><b>{{ ruleTotal(r) }}</b></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="dash-table">
+          <thead>
+            <tr><th>rule</th><th>minor</th><th>moderate</th><th>severe</th><th>total</th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of summary.per_rule">
+              <td class="mono">{{ r.rule_id }}</td>
+              <td>{{ sev(r, 'minor') }}</td>
+              <td>{{ sev(r, 'moderate') }}</td>
+              <td>{{ sev(r, 'severe') }}</td>
+              <td><b>{{ ruleTotal(r) }}</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- Coverage by source table -->
       <h3>Coverage by source table</h3>
-      <table class="dash-table">
-        <thead>
-          <tr><th>source table</th><th class="num">rows</th><th class="num">flagged events</th><th class="num">flag rate</th></tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let t of summary.per_table">
-            <td class="mono">{{ t.source_table }}</td>
-            <td class="num">{{ t.rows.toLocaleString() }}</td>
-            <td class="num">{{ t.flagged_events.toLocaleString() }}</td>
-            <td class="num">{{ pct(t.flagged_events, t.rows) }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="dash-table">
+          <thead>
+            <tr><th>source table</th><th class="num">rows</th><th class="num">flagged events</th><th class="num">flag rate</th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of summary.per_table">
+              <td class="mono">{{ t.source_table }}</td>
+              <td class="num">{{ t.rows.toLocaleString() }}</td>
+              <td class="num">{{ t.flagged_events.toLocaleString() }}</td>
+              <td class="num">{{ pct(t.flagged_events, t.rows) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- Unit variation -->
       <h3>Unit variation (subtypes with &gt;1 unit)</h3>
@@ -156,22 +160,24 @@ import { EvalReport, QualitySummary } from '../../models';
             {{ evalOpen ? 'Hide' : 'Show' }} per-question results ({{ evalReport.total }})
           </button>
 
-          <table class="dash-table eval-table" *ngIf="evalOpen">
-            <thead>
-              <tr><th>#</th><th>category</th><th>question</th><th>status</th><th class="num">cites</th><th class="num">latency</th><th>verdict</th></tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let q of evalReport.questions">
-                <td class="mono">{{ q.qid }}</td>
-                <td class="mono">{{ q.category }}</td>
-                <td class="ev-q">{{ q.question }}</td>
-                <td class="mono">{{ q.status }}</td>
-                <td class="num">{{ q.citations }}</td>
-                <td class="num">{{ q.latency_s }}s</td>
-                <td [class.ok]="q.pass" [class.bad]="!q.pass" class="ev-verdict"><b>{{ q.pass ? 'PASS' : 'FAIL' }}</b></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table class="dash-table eval-table" *ngIf="evalOpen">
+              <thead>
+                <tr><th>#</th><th>category</th><th>question</th><th>status</th><th class="num">cites</th><th class="num">latency</th><th>verdict</th></tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let q of evalReport.questions">
+                  <td class="mono">{{ q.qid }}</td>
+                  <td class="mono">{{ q.category }}</td>
+                  <td class="ev-q">{{ q.question }}</td>
+                  <td class="mono">{{ q.status }}</td>
+                  <td class="num">{{ q.citations }}</td>
+                  <td class="num">{{ q.latency_s }}s</td>
+                  <td [class.ok]="q.pass" [class.bad]="!q.pass" class="ev-verdict"><b>{{ q.pass ? 'PASS' : 'FAIL' }}</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -222,6 +228,9 @@ import { EvalReport, QualitySummary } from '../../models';
     }
 
     .dash-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    .table-scroll { overflow-x: auto; }
+    .table-scroll .dash-table { min-width: 520px; }
+    .table-scroll .eval-table { min-width: 720px; }
     .dash-table th {
       text-align: left;
       padding: 6px 10px;
@@ -331,6 +340,10 @@ import { EvalReport, QualitySummary } from '../../models';
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
 
     @media (max-width: 720px) { .kpis { grid-template-columns: 1fr; } .unit-item { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 560px) {
+      .eval-metric { grid-template-columns: 1fr; gap: 4px; }
+      .ev-num { text-align: left; }
+    }
     `,
   ],
 })

@@ -357,6 +357,11 @@ interface Message {
     .input-row button:hover:not(:disabled) { opacity: 0.9; }
     .input-row button:active:not(:disabled) { transform: scale(0.97); }
     .input-row button:disabled { opacity: 0.4; cursor: default; }
+
+    @media (max-width: 720px) {
+      .messages { min-height: 260px; }
+      .cite { flex-wrap: wrap; row-gap: 3px; }
+    }
   `],
 })
 export class QaPanelComponent implements AfterViewChecked {

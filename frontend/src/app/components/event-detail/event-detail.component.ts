@@ -91,6 +91,7 @@ import { QualityBadgeComponent } from '../quality-badge/quality-badge.component'
     .modal {
       width: min(860px, 94vw);
       max-height: 82vh;
+      max-height: 82dvh;
       overflow: auto;
       background: var(--surface);
       border-radius: var(--r-14);
@@ -115,7 +116,7 @@ import { QualityBadgeComponent } from '../quality-badge/quality-badge.component'
       z-index: 1;
     }
     .title { font-size: 16px; font-weight: 600; color: var(--ink); }
-    .sub { font-size: 12px; color: var(--ink-3); margin-top: 3px; font-variant-numeric: tabular-nums; }
+    .sub { font-size: 12px; color: var(--ink-3); margin-top: 3px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 
     .x {
       display: grid;
@@ -172,6 +173,11 @@ import { QualityBadgeComponent } from '../quality-badge/quality-badge.component'
     }
     .loading .bar.short { width: 60%; animation-delay: 0.12s; }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+    @media (max-width: 720px) {
+      .head { position: static; }
+      .rows th { position: static; }
+    }
   `],
 })
 export class EventDetailComponent implements OnChanges {

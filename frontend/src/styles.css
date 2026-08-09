@@ -7,8 +7,10 @@
 
 /* ---------------------------------------------------------------
    Design tokens — one source of truth for both themes.
-   Theme is set via data-theme on <html>; toggle persists in
-   localStorage and defaults to dark (clinical instrument).
+   Theme is set via data-theme on <html>; the toggle persists in
+   localStorage. Resolution: stored choice → prefers-color-scheme
+   → light. Same logic runs in index.html before first paint and
+   in app.component.ts, so splash and app always agree.
    --------------------------------------------------------------- */
 :root {
   color-scheme: light;
@@ -176,4 +178,42 @@ table, .tabular { font-variant-numeric: tabular-nums; }
     transition-duration: 0.001s !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ---------------------------------------------------------------
+   Boot splash — brand moment shown pre-Angular (markup lives in
+   index.html). One wordmark, one fade. Token-driven, so it always
+   matches the resolved theme (stored → system → light). Removed
+   by app.component.ts after first render.
+   --------------------------------------------------------------- */
+#boot-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  animation: splash-in var(--d-med) var(--ease);
+}
+
+#boot-splash .boot-word {
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 6vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  user-select: none;
+}
+
+#boot-splash .boot-dot { color: var(--accent); }
+
+#boot-splash.boot-splash-hide {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity var(--d-slow) var(--ease), transform var(--d-slow) var(--ease);
+}
+
+@keyframes splash-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

@@ -381,6 +381,16 @@ const TYPE_VARS: Record<string, string> = {
     }
     .empty i { font-size: 22px; }
     .empty p { margin: 8px 0 0; font-size: 13px; }
+
+    @media (max-width: 720px) {
+      .rail { display: none; }
+      .group { flex-wrap: wrap; row-gap: 5px; }
+      .type { min-width: 74px; }
+      .name { min-width: 0; max-width: none; flex: 1 1 auto; }
+      .value { margin-left: auto; }
+      .summary { margin-left: 0; flex-basis: 100%; white-space: normal; max-width: none; }
+      .day-body { padding-left: 10px; }
+    }
   `],
 })
 export class TimelineComponent implements OnChanges, AfterViewInit, OnDestroy {

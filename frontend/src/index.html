@@ -9,14 +9,20 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script>
     try {
-      var t = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', t);
+      var t = localStorage.getItem('theme');
+      if (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        t = 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', t || 'light');
     } catch (e) {
-      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.setAttribute('data-theme', 'light');
     }
   </script>
 </head>
 <body>
+  <div id="boot-splash" aria-hidden="true">
+    <span class="boot-word">MedicTrace<span class="boot-dot">.</span></span>
+  </div>
   <app-root></app-root>
 </body>
 </html>
